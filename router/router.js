@@ -13,6 +13,7 @@ module.exports = function(app){
 
 // pilotes
     app.get('/repertoirePilote', PiloteController.Repertoire);
+    app.get('/repertoirePilote/:lettre',PiloteController.ListePilotesParLettre);
 
  // circuits
    app.get('/circuits', CircuitController.ListerCircuit);

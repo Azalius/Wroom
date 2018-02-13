@@ -26,3 +26,18 @@ module.exports.getListePilotes = function (callback) {
          }
       });
 };
+module.exports.getListePilotesAvecLettre = function (callback, lettre) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql ="SELECT pilnom FROM pilote WHERE SUBSTR(pilnom,1,1)= '" + lettre + "' ORDER BY pilnom";
+						console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};

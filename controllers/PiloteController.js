@@ -14,3 +14,17 @@ module.exports.Repertoire = 	function(request, response){
       response.render('repertoirePilotes', response);
   });
 }
+module.exports.ListePilotesParLettre = function(request, response){
+  var lettre = request.params.lettre;
+  response.title = 'Répertoire des pilotes';
+  model.getListePilotesAvecLettre( function (err, result) {
+      if (err) {
+          // gestion de l'erreur
+          console.log(err);
+          return;
+      }
+     response.listePilotesParLettre = result;
+     console.log(result);
+     response.render('repertoirePilotes', response);
+ }, lettre);
+}
