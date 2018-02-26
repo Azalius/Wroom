@@ -3,3 +3,8 @@
 	 {{#each listePilotes}}
 		<a href="/repertoirePilote/{{this.pilnom}}">{{this.pilnom}}</a>
  {{/each}}
+ <br>
+	{{#each listePilotesParLettre}}
+	<img src="/image/pilote/{{this.phoadresse}}"/>
+	{{this.pilnom}} {{this.pilprenom}}
+	{{/each}}

@@ -32,8 +32,8 @@ module.exports.getListePilotesAvecLettre = function (callback, lettre) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ="SELECT pilnom FROM pilote WHERE SUBSTR(pilnom,1,1)= '" + lettre + "' ORDER BY pilnom";
-						console.log (sql);
+						let sql ="SELECT pilprenom, pilnom, phoadresse FROM pilote p INNER JOIN photo ph on p.pilnum=ph.pilnum WHERE SUBSTR(pilnom,1,1)= '" + lettre + "' AND ph.phonum='1' ORDER BY pilnom";
+						//console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool

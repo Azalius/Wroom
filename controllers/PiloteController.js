@@ -1,4 +1,5 @@
 let model = require('../models/pilote.js');
+var async = require('async');
 
 // ///////////////////////// R E P E R T O I R E    D E S    P I L O T E S
 
@@ -24,7 +25,15 @@ module.exports.ListePilotesParLettre = function(request, response){
           return;
       }
      response.listePilotesParLettre = result;
-     console.log(result);
-     response.render('repertoirePilotes', response);
  }, lettre);
+ model.getListePilotes( function (err, result) {
+     if (err) {
+         // gestion de l'erreur
+         console.log(err);
+         return;
+     }
+    response.listePilotes = result;
+    response.render('repertoirePilotes', response);
+});
+
 }
