@@ -18,22 +18,35 @@ module.exports.Repertoire = 	function(request, response){
 module.exports.ListePilotesParLettre = function(request, response){
   var lettre = request.params.lettre;
   response.title = 'Répertoire des pilotes';
-  model.getListePilotesAvecLettre( function (err, result) {
-      if (err) {
-          // gestion de l'erreur
-          console.log(err);
-          return;
-      }
-     response.listePilotesParLettre = result;
- }, lettre);
- model.getListePilotes( function (err, result) {
-     if (err) {
-         // gestion de l'erreur
-         console.log(err);
-         return;
-     }
-    response.listePilotes = result;
-    response.render('repertoirePilotes', response);
-});
+  async.parallel([
+    function(callback){
+      model.getListePilotesAvecLettre( function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        callback(null, result);
+       },lettre);
 
+     },
+     function(callback){
+       model.getListePilotes( function (err, result) {
+           if (err) {
+               // gestion de l'erreur
+               console.log(err);
+               return;
+           }
+           callback(null, result);
+      })
+    }
+  ],
+   function(err,result){
+     if(err){
+       console.log(err);
+       return;
+     }
+     response.listePilotesParLettre = result[0];
+     response.listePilotes = result[1];
+     response.render('repertoirePilotes', response);
+  });
 }
