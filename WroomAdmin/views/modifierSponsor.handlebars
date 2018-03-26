@@ -1,0 +1,22 @@
+<center>
+    <h1>Modifier un Sponsor</h1>
+    <form action="/menuSponsors/modifierSponsor/{{infosSponsor.SPONUM}}/modifier" method="post">
+        <table> 
+            <tr><td>Nom</td><td><input type="text" name="nom" value="{{infosSponsor.SPONOM}}" required/></td></tr>
+            <tr><td>Secteur d'activité</td><td><input type="text" name="activite" value="{{infosSponsor.SPOSECTACTIVITE}}" required/></td></tr>
+            <tr><td>Ecurie sponsorisee</td>
+                <td> 
+                    <select name="ecurie">
+                            <option value="0">Aucune</option>
+                        {{#each listeEcurie}}
+                            <option value="{{this.ECUNUM}}" {{#ifCond ../ecurieSponsor.ECUNUM '==' this.ECUNUM}}selected{{/ifCond}}>{{this.ECUNOM}}</option>
+                        {{/each}}
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <br/><br/>
+        <input type="submit" name="modifier" value="Modifier" id="bouton"/>
+    </form>
+</center>

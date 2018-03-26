@@ -1,0 +1,21 @@
+<center>
+    <h1>Administration</h1>
+    <form action="homeAdministration" method="post">
+        <table>
+            <tr><td>Login :</td><td><input type="text" name="login" id="login" required/></td></tr>
+            <tr><td>Mot de passe :</td><td><input type="password" name="password" id="password" required/></td></tr>
+        </table><br/>
+
+        <input type="button" name="annuler" value="Annuler" onclick="resetValueInput()"/>
+        <input type="submit" name="connexion" value="Connexion"/>
+    </form>
+    
+    <p>Authentification non autorisée !</p>
+</center>
+
+<script type="text/javascript">
+    function resetValueInput(){
+        document.getElementById('login').value="";
+        document.getElementById('password').value="";
+    }
+</script>

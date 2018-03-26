@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/F1NodeEtu.iml" filepath="$PROJECT_DIR$/.idea/F1NodeEtu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/projetWroomJS.iml" filepath="$PROJECT_DIR$/.idea/projetWroomJS.iml" />
     </modules>
   </component>
 </project>

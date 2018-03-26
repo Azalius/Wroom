@@ -2,4 +2,5 @@
 # Ignorer tous les fichiers nommés *.*~
 *.*~
 # Ignorer le repertoire node_modules
-node_modules/*
+WroomAdmin/node_modules/*
+WroomClassique/node_modules/*

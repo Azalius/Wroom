@@ -1,0 +1,19 @@
+<center>
+<div style="border:solid black;">
+
+<p>Dernier Résultat</p>
+
+
+{{#each dernierresultat}}
+
+<p>{{this.gpnom}} du {{this.gpdate}}</p>
+
+
+{{#each ../dernieremaj}}
+<p>Mise à jour : {{this.gpdatemaj}}</p>
+ {{/each}}
+
+<a href="/detailsResultat/{{this.gpnum}}">Voir les résultats</a>
+ {{/each}}
+</div>
+</center>
