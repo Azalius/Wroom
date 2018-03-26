@@ -12,7 +12,7 @@ module.exports.getAllNationalite=function(callback){
 	});
 };
 
-module.exports.getAllPays = function (callback) {
+module.exports.getPays = function (callback) {
 	db.getConnection(function(err, connexion){
         if(!err){
 			let sql ="SELECT PAYNUM, PAYNOM FROM pays ";

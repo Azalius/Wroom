@@ -2,8 +2,8 @@
 <div>
     <center>
     Cliquez sur une lettre :
-    {{#each listePremiereLettreNom}}
-        <a href="/repertoirePilote/{{this.premiere_lettre}}">{{this.premiere_lettre}}</a>
+    {{#each listeInitiales}}
+        <a href="/repertoirePilote/{{this.initiale}}">{{this.initiale}}</a>
     {{/each}}
     </center>
     <br/>
@@ -18,7 +18,7 @@
                 </td>
             </tr>
             <tr>
-                <td> 
+                <td>
                     <b>Date de naissance :</b> {{formatDate detailPilote.PILDATENAIS 'DD/MM/YYYY'}}
                 </td>
                 <td>
@@ -26,7 +26,7 @@
                 </td>
             </tr>
             <tr>
-                <td> 
+                <td>
                     <b>Nationalité :</b> {{detailPilote.PAYNAT}}
                 </td>
                 <td>
@@ -55,10 +55,10 @@
             {{/each}}
         {{/if}}
     </div>
-    
+
     <p><b>Qui suis-je ? </b>{{detailPilote.PILTEXTE}}</p>
 </div>
-    
+
 <!-- Photos -->
 <div>
     <center>

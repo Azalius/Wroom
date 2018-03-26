@@ -8,23 +8,24 @@ let CircuitController = require('./../controllers/CircuitController');
 module.exports = function(app){
 
 // Main Routes
-    app.get('/', HomeController.GetDernierResultat);
+    app.get('/', HomeController.GetLastResultat);
+    app.get('/accueil', HomeController.GetLastResultat);
 
 // pilotes
-    app.get('/repertoirePilote', PiloteController.Repertoire);
-	app.get('/repertoirePilote/:lettreNom', PiloteController.listeNom);
-    app.get('/repertoirePilote/detailPilote/:numPilote', PiloteController.infosPilote);
+    app.get('/repertoirePilote', PiloteController.ListerLettres);
+	app.get('/repertoirePilote/:lettreNom', PiloteController.ListerNoms);
+    app.get('/repertoirePilote/detailPilote/:numPilote', PiloteController.InfosPilote);
 
  // circuits
    app.get('/circuits', CircuitController.ListerCircuits);
-   app.get('/circuits/detailCircuit/:numCircuit', CircuitController.detailCircuit);
+   app.get('/circuits/detailCircuit/:numCircuit', CircuitController.InfosCircuit);
 
 // Ecuries
-    app.get('/ecuries', EcurieController.ListerEcurie);
-    app.get('/detailEcurie/:numEcurie', EcurieController.DetailEcurie);
+    app.get('/ecuries', EcurieController.ListerEcuries);
+    app.get('/detailEcurie/:numEcurie', EcurieController.InfoEcurie);
 
  //Résultats
- app.get('/resultats', ResultatController.ListerResultat);
+ app.get('/resultats', ResultatController.ListerResultats);
  app.get('/detailsResultat/:gpnum', ResultatController.ResultatGrandPrix);
 
 // tout le reste

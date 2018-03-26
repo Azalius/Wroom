@@ -37,8 +37,7 @@ module.exports.getInfosCircuits = function (num,callback) {
 module.exports.getMenuCircuit = function (callback) {
 	db.getConnection(function(err, connexion){
         if(!err){
-			let sql ="SELECT CIRNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS FROM circuit ";
-			sql+="ORDER BY CIRNOM";
+			let sql ="SELECT CIRNUM,CIRNOM,CIRLONGUEUR,CIRNBSPECTATEURS FROM circuit ORDER BY CIRNOM";
             connexion.query(sql, callback);
 
             connexion.release();

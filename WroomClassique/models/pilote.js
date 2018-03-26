@@ -5,14 +5,13 @@ let db = require('../configDb');
 * R�cup�rer l'int�gralit� des lettres du nom des pilotes
 * @return Un tableau qui contient les premi�res lettres du nom des pilotes
 */
-module.exports.getPremiereLettreNom = function (callback) {
+module.exports.getInitiale = function (callback) {
    // connection � la base
 	db.getConnection(function(err, connexion){
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requ�te SQL
-						let sql="SELECT DISTINCT(SUBSTRING(PILNOM,1,1)) AS premiere_lettre FROM pilote ";
-						sql+="ORDER BY premiere_lettre";
+						let sql="SELECT DISTINCT(SUBSTRING(PILNOM,1,1)) AS initiale FROM pilote ORDER BY initiale";
 						//console.log(sql);
             connexion.query(sql, callback);
 
@@ -27,7 +26,7 @@ module.exports.getPremiereLettreNom = function (callback) {
 * @Param : Premi�re lettre du nom des pilotes
 * @Return un tableau qui contient les noms et pr�noms des pilotes selon la lettre
 */
-module.exports.getListePiloteParNom=function(lettre,callback){
+module.exports.getListePilotesParInit=function(lettre,callback){
    // connection � la base
 	db.getConnection(function(err, connexion){
         if(!err){
@@ -49,7 +48,7 @@ module.exports.getListePiloteParNom=function(lettre,callback){
 * @Param : id du pilote
 * @Return les informations d'un pilote : nom,pr�nom,date naissance,poids,taille,description,nationalit�,photo
 */
-module.exports.getInformationsOfOnePilote=function(id,callback){
+module.exports.getInfosPilote=function(id,callback){
 	db.getConnection(function(err,connexion){
 		if(!err){
 			let sql="SELECT p.PILNUM,p.PILNOM,p.PILPRENOM,p.PILDATENAIS,p.PILPOIDS,p.PILTAILLE,p.PILTEXTE,p.PILPOINTS,p2.PAYNAT,p2.PAYNUM,p3.PHOADRESSE FROM pilote p INNER JOIN pays p2 INNER JOIN photo p3 ";
@@ -82,7 +81,7 @@ module.exports.getInformationsPilote=function(id,callback){
 * @Param : id du pilote
 * @Return liste des photos
 */
-module.exports.getAllPhotosOfOnePilote=function(id,callback){
+module.exports.getPicsPilote=function(id,callback){
 	db.getConnection(function(err,connexion){
 		if(!err){
 			let sql="SELECT PILNUM,PHOSUJET,PHOCOMMENTAIRE,PHOADRESSE FROM photo ";
@@ -99,7 +98,7 @@ module.exports.getAllPhotosOfOnePilote=function(id,callback){
 * @Param : id du pilote
 * @Return liste des sponsors
 */
-module.exports.getAllSponsorsOfOnePilote=function(id,callback){
+module.exports.getSponsorsPilote=function(id,callback){
 	db.getConnection(function(err,connexion){
 		if(!err){
 			let sql="SELECT s.SPONOM,s.SPOSECTACTIVITE FROM sponsor s INNER JOIN sponsorise s2 ";
@@ -116,7 +115,7 @@ module.exports.getAllSponsorsOfOnePilote=function(id,callback){
 * @Param : id du pilote
 * @Return l'�curie du pilote s'il en a un
 */
-module.exports.getStableofOnePilote=function(id,callback){
+module.exports.getEtablePilote=function(id,callback){
 	db.getConnection(function(err,connexion){
 		if(!err){
 			let sql="SELECT e.ECUNUM,e.ECUNOM FROM ecurie e INNER JOIN pilote p ";

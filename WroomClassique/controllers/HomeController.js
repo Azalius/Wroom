@@ -6,24 +6,24 @@ module.exports.Index = function(request, response){
     response.render('home', response);
 };
 
-module.exports.GetDernierResultat = function(request, response){
+module.exports.GetLastResultat = function(request, response){
     response.title = 'Dernier Resultat';
-    model.getDernierResultat( function(err, result){
+    model.getLastRes( function(err, result){
         if (err) {
             // gestion de l'erreur
             console.log(err);
             return;
         }
-  		response.dernierresultat = result;
+  		response.lastRes = result;
     });
 
-    model.getDerniereMaj( function(err, result){
+    model.getLastUpd( function(err, result){
         if (err) {
             // gestion de l'erreur
             console.log(err);
             return;
         }
-  		response.dernieremaj = result;
+  		response.lastUpd = result;
     	response.render('home', response);
     });
 }

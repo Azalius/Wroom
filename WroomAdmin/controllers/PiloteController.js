@@ -76,19 +76,19 @@ module.exports.infosPilote=function(request,response){
         }, //fin callback1
         
         function(callback){
-            model.getAllSponsorsOfOnePilote(num,function(err,result){
+            model.getSponsorsPilote(num,function(err,result){
                callback(null,result);
             });
         }, //fin callback2
     
         function(callback){
-            model.getAllPhotosOfOnePilote(num,function(err,result2){
+            model.getPicsPilote(num,function(err,result2){
                callback(null,result2);
             });
         }, //fin callback3
         
         function(callback){
-            model.getStableofOnePilote(num,function(err,result2){
+            model.getEtablePilote(num,function(err,result2){
                callback(null,result2);
             });
         }, //fin callback4
@@ -163,7 +163,7 @@ module.exports.pageModifierPilote = function(request, response){
         }, //fin callback0
         
         function(callback){
-            model.getStableofOnePilote(num,function(err,result){
+            model.getEtablePilote(num,function(err,result){
                callback(null,result);
             });
         }, //fin callback1

@@ -1,6 +1,6 @@
 let db = require('../configDb');
 
-module.exports.getDernierResultat = function(callback){
+module.exports.getLastRes = function(callback){
 	db.getConnection(function(err, connexion){
 		if(!err){
 			let sql = "SELECT gpnom, DATE_FORMAT(gpdate, "+'"%d/%m/%Y"'+") as gpdate, gpnum FROM grandprix ORDER BY gpdate LIMIT 1";
@@ -11,7 +11,7 @@ module.exports.getDernierResultat = function(callback){
 	});
 };
 
-module.exports.getDerniereMaj = function(callback){
+module.exports.getLastUpd = function(callback){
 	db.getConnection(function(err, connexion){
 		if(!err){
 			let sql = "SELECT DATE_FORMAT(gpdatemaj, "+'"%d/%m/%Y"'+") as gpdatemaj FROM grandprix ORDER BY gpdatemaj DESC LIMIT 1";
